@@ -1,0 +1,3 @@
+from pytracking.evaluation.environment import create_default_local_file
+
+create_default_local_file()
