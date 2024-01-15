@@ -1,0 +1,20 @@
+def parse_coordinates(coord_str):
+    """解析单个坐标字符串，返回(x, y)元组。"""
+    x, y = coord_str.split(',')
+    return int(x), int(y)
+
+def calculate_and_save_differences(input_file_path, output_file_path):
+    """计算坐标差异并将结果保存到新文件中。"""
+    with open(input_file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
+        for line in input_file:
+            coord1_str, coord2_str = line.split()
+            x1, y1 = parse_coordinates(coord1_str)
+            x2, y2 = parse_coordinates(coord2_str)
+            diff_x = x2 - x1
+            diff_y = y2 - y1
+            output_file.write(f"{diff_x}, {diff_y}\n")
+
+# 使用脚本
+input_file_path = '/home/fengshuo/code/VideoX-master/SeqTrack/data/lasot/fanzhuan/frame1.txt'  # 替换为您的输入文件路径
+output_file_path = 'frameresult.txt'  # 替换为您的输出文件路径
+calculate_and_save_differences(input_file_path, output_file_path)
